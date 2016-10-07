@@ -2,9 +2,10 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Mdi.RkrGst.Collections;
 using Mdi.RkrGst.Model;
 
-namespace Mdi.RkrGst.Test
+namespace Mdi.RkrGst.Model
 {
   public class SimpleSubmission : ISubmission
   {
@@ -38,7 +39,27 @@ namespace Mdi.RkrGst.Test
 
     public HashDictionary CreateHashes(int hashLength)
     {
-      throw new NotImplementedException();
+      var hDictionary = new HashDictionary();
+      var buffer = new RingBuffer<int>(hashLength);
+      for (int i = 0; i < tokens.Count; i++)
+      {
+        var token = tokens[i];
+
+        if (token.State == TokenState.EndOfFile)
+        {
+          buffer.Clear();
+          continue;
+        }
+
+        buffer.Add(token.Value);
+
+        if (buffer.Count == buffer.Capacity)
+        {
+          hDictionary.Add(buffer.GetHashCode(), i);
+        }
+      }
+
+      return hDictionary;
     }
   }
 }

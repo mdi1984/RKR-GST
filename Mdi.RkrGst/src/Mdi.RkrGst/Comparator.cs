@@ -43,6 +43,8 @@ namespace Mdi.RkrGst
 
     public void Compare()
     {
+      this.pattern.CreateHashes(this.mml);
+      this.pattern.CreateHashes(this.mml);
       // TODO
     }
   }

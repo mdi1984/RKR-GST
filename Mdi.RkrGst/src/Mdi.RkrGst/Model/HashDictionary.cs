@@ -8,7 +8,7 @@ namespace Mdi.RkrGst.Model
 {
   public class HashDictionary
   {
-    private Dictionary<int, List<int>> dictionary;
+    public Dictionary<int, List<int>> dictionary;
 
     public HashDictionary()
     {
