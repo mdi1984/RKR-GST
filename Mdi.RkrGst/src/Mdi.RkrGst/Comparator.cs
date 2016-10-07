@@ -20,6 +20,17 @@ namespace Mdi.RkrGst
     /// <param name="text"></param>
     public Comparator(int minimumMatchLengh, ISubmission pattern, ISubmission text)
     {
+      if(pattern.Size >= text.Size)
+      {
+        this.pattern = pattern;
+        this.text = text;
+      }
+      else
+      {
+        this.pattern = text;
+        this.text = pattern;
+      }
+
       if (this.pattern.Combined != this.text.Combined)
       {
         throw new InvalidOperationException("Combined flag on pattern and text objects must be identical");
