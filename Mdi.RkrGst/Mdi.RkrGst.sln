@@ -14,7 +14,7 @@ Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "Mdi.RkrGst", "src\Mdi.RkrGs
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{77B2B9BC-9C5F-4B83-B521-0D0BBF74FC56}"
 EndProject
-Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "Mdi.RkrGst.Test", "Mdi.RkrGst.Test\Mdi.RkrGst.Test.xproj", "{8AA96C06-BE3C-4644-9F3C-6DEC73A657AB}"
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "Mdi.RkrGst.Test", "src\Mdi.RkrGst.Test\Mdi.RkrGst.Test.xproj", "{8AA96C06-BE3C-4644-9F3C-6DEC73A657AB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
