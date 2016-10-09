@@ -7,19 +7,19 @@ using Mdi.RkrGst.Model;
 
 namespace Mdi.RkrGst.Model
 {
-  public class SimpleSubmission : ISubmission
+  public class SimpleSubmission<T> : ISubmission<T>
   {
-    private List<Token> tokens;
+    private List<Token<T>> tokens;
 
-    public SimpleSubmission(int[] tokens)
+    public SimpleSubmission(T[] tokens)
     {
-      this.tokens = tokens.Select(t => new Token(t, TokenState.Valid)).ToList();
+      this.tokens = tokens.Select(t => new Token<T>(t, TokenState.Valid)).ToList();
       var last = this.tokens.Last();
       this.tokens.RemoveAt(tokens.Length - 1);
-      this.tokens.Add(new Token(last.Value, TokenState.EndOfSubmission));
+      this.tokens.Add(new Token<T>(last.Value, TokenState.EndOfSubmission));
     }
 
-    public Token this[int index]
+    public Token<T> this[int index]
     {
       get
       {
@@ -47,7 +47,7 @@ namespace Mdi.RkrGst.Model
       }
 
       this.Hashes = new HashDictionary();
-      var buffer = new RingBuffer<int>(hashLength);
+      var buffer = new RingBuffer<T>(hashLength);
       for (int i = 0; i < tokens.Count; i++)
       {
         var token = tokens[i];

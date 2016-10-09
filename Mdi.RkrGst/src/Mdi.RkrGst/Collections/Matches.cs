@@ -8,16 +8,16 @@ namespace Mdi.RkrGst.Collections
 {
   public class Matches : List<Match>
   {
-    public void AddMatch(int startA, int startB, int length)
+    public void AddMatch(int startText, int startPattern, int length)
     {
-      this.AddMatch(new Match(startA, startB, length));
+      this.AddMatch(new Match(startText, startPattern, length));
     }
 
     public void AddMatch(Match match)
     {
       // check overlap in first element
       if (this.Any(m =>
-        Math.Max(m.FirstPosition + m.Length, match.FirstPosition + m.Length) - Math.Min(m.FirstPosition, match.FirstPosition) < (m.Length + match.Length)
+        Math.Max(m.TextPosition + m.Length, match.TextPosition + m.Length) - Math.Min(m.TextPosition, match.TextPosition) < (m.Length + match.Length)
       ))
       {
         return;
@@ -25,7 +25,7 @@ namespace Mdi.RkrGst.Collections
 
       // check overlap in second element
       if (this.Any(m =>
-        Math.Max(m.SecondPosition + m.Length, match.SecondPosition + m.Length) - Math.Min(m.SecondPosition, match.SecondPosition) < (m.Length + match.Length)
+        Math.Max(m.PatternPosition + m.Length, match.PatternPosition + m.Length) - Math.Min(m.PatternPosition, match.PatternPosition) < (m.Length + match.Length)
       ))
       {
         return;

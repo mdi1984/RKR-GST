@@ -7,15 +7,22 @@ namespace Mdi.RkrGst.Model
 {
   public class Match
   {
-    internal Match(int startA, int startB, int length)
+    internal Match(int starText, int startPattern, int length)
     {
-      this.FirstPosition = startA;
-      this.SecondPosition = startB;
+      this.TextPosition = starText;
+      this.PatternPosition = startPattern;
       this.Length = length;
     }
 
-    public int FirstPosition { get; private set; }
-    public int SecondPosition { get; private set; }
+    public int TextPosition { get; private set; }
+    public int PatternPosition { get; private set; }
     public int Length { get; private set; }
+
+    public void Swap()
+    {
+      var tmp = this.TextPosition;
+      this.TextPosition = this.PatternPosition;
+      this.PatternPosition = tmp;
+    }
   }
 }

@@ -5,9 +5,9 @@ using System.Threading.Tasks;
 
 namespace Mdi.RkrGst.Model
 {
-  public class Token
+  public class Token<T>
   {
-    public Token(int value, TokenState state)
+    public Token(T value, TokenState state)
     {
       this.Value = value;
       this.State = state;
@@ -16,7 +16,7 @@ namespace Mdi.RkrGst.Model
     }
 
     public TokenState State { get; private set; }
-    public int Value { get; private set; }
+    public T Value { get; private set; }
     public int Hash { get; set; }
     public bool Marked { get; set; }
   }

@@ -7,12 +7,12 @@ using Mdi.RkrGst.Model;
 
 namespace Mdi.RkrGst
 {
-  public class Comparator
+  public class Comparator<T>
   {
     private bool patternAndTextInverted;
     private int mml;
-    private ISubmission pattern;
-    private ISubmission text;
+    private ISubmission<T> pattern;
+    private ISubmission<T> text;
 
     /// <summary>
     /// 
@@ -20,7 +20,7 @@ namespace Mdi.RkrGst
     /// <param name="minimumMatchLengh">maximal-matches and tiles below this length are ignored.</param>
     /// <param name="pattern"></param>
     /// <param name="text"></param>
-    public Comparator(int minimumMatchLengh, ISubmission pattern, ISubmission text)
+    public Comparator(int minimumMatchLengh, ISubmission<T> text, ISubmission<T> pattern)
     {
       if (pattern.Combined != text.Combined)
       {
@@ -34,14 +34,14 @@ namespace Mdi.RkrGst
 
       if (pattern.Size >= text.Size)
       {
-        this.patternAndTextInverted = true;
-        this.pattern = text;
         this.text = pattern;
+        this.pattern = text;
+        this.patternAndTextInverted = true;
       }
       else
       {
-        this.pattern = pattern;
         this.text = text;
+        this.pattern = pattern;
       }
 
       this.mml = minimumMatchLengh;
@@ -107,14 +107,22 @@ namespace Mdi.RkrGst
         {
           for (var a = 0; a < maxMatch - 1; a++)
           {
-            text[match.FirstPosition + a].Marked = true;
-            pattern[match.SecondPosition + a].Marked = true;
+            text[match.TextPosition + a].Marked = true;
+            pattern[match.PatternPosition + a].Marked = true;
           }
 
           tiles.Add(match);
         }
 
       } while (maxMatch != mml);
+
+      if (this.patternAndTextInverted)
+      {
+        foreach (var tile in tiles)
+        {
+          tile.Swap();
+        }
+      }
 
       return tiles;
     }
