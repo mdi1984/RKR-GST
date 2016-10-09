@@ -55,7 +55,9 @@ namespace Mdi.RkrGst.Model
 
         if (buffer.Count == buffer.Capacity)
         {
-          hDictionary.Add(buffer.GetHashCode(), i);
+          var hash = buffer.GetHashCode();
+          hDictionary.Add(hash, i);
+          tokens[i - hashLength + 1].Hash = hash;
         }
       }
 

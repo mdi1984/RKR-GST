@@ -8,7 +8,7 @@ namespace Mdi.RkrGst.Model
 {
   public class HashDictionary
   {
-    public Dictionary<int, List<int>> dictionary;
+    private Dictionary<int, List<int>> dictionary;
 
     public HashDictionary()
     {
@@ -26,5 +26,14 @@ namespace Mdi.RkrGst.Model
         dictionary.Add(key, new List<int> { value });
       }
     }
+
+    public List<int> this[int index]
+    {
+      get
+      {
+        return this.dictionary.ContainsKey(index) ? this.dictionary[index] : null;
+      }
+    }
+
   }
 }
