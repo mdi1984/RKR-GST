@@ -10,6 +10,8 @@ namespace Mdi.RkrGst.Model
     bool Combined { get; }
     Token this[int index] { get; }
     int Size { get; }
-    HashDictionary CreateHashes(int hashLength);
+    HashDictionary Hashes { get; }
+    void CreateHashes(int hashLength, bool makeTable);
+    void Reset();
   }
 }

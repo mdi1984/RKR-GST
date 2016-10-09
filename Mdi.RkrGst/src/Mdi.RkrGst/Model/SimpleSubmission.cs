@@ -37,9 +37,16 @@ namespace Mdi.RkrGst.Model
       get { return this.tokens.Count; }
     }
 
-    public HashDictionary CreateHashes(int hashLength)
+    public HashDictionary Hashes { get; set; }
+
+    public void CreateHashes(int hashLength, bool makeTable)
     {
-      var hDictionary = new HashDictionary();
+      if (this.Hashes != null)
+      {
+        return;
+      }
+
+      this.Hashes = new HashDictionary();
       var buffer = new RingBuffer<int>(hashLength);
       for (int i = 0; i < tokens.Count; i++)
       {
@@ -56,12 +63,22 @@ namespace Mdi.RkrGst.Model
         if (buffer.Count == buffer.Capacity)
         {
           var hash = buffer.GetHashCode();
-          hDictionary.Add(hash, i);
+          if (makeTable)
+          {
+            this.Hashes.Add(hash, i - hashLength + 1);
+          }
+
           tokens[i - hashLength + 1].Hash = hash;
         }
       }
+    }
 
-      return hDictionary;
+    public void Reset()
+    {
+      foreach(var token in this.tokens)
+      {
+        token.Marked = false;
+      }
     }
   }
 }
