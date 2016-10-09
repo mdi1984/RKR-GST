@@ -315,7 +315,7 @@ namespace Mdi.RkrGst.Collections
       int hc = _buffer.Length;
       for (int i = 0; i < _buffer.Length; ++i)
       {
-        hc = unchecked(hc * 11 + _buffer[i].GetHashCode());
+        hc = unchecked(hc * 11 + this.ElementAt(i).GetHashCode());
       }
       return hc;
     }
