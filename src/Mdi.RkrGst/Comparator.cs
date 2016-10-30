@@ -61,7 +61,7 @@ namespace Mdi.RkrGst
         maxMatch = this.mml;
         var matches = new Matches();
 
-        for (int iT = 0; iT < this.text.Size - maxMatch; iT++)
+        for (int iT = 0; iT < this.text.Size - maxMatch + 1; iT++)
         {
           var patternPositions = this.pattern.Hashes[this.text[iT].Hash];
           if (this.text[iT].Marked || patternPositions == null)
