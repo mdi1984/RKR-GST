@@ -1,20 +1,17 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.25420.1
+# Visual Studio 15
+VisualStudioVersion = 15.0.26228.4
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{A4B2CF76-8B07-4A09-AFE5-EDB09C41BEC4}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{B3568F78-34D4-4181-99BB-4CBEC0CEE12A}"
-	ProjectSection(SolutionItems) = preProject
-		global.json = global.json
-	EndProjectSection
-EndProject
-Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "Mdi.RkrGst", "src\Mdi.RkrGst\Mdi.RkrGst.xproj", "{D34FA820-E368-48DF-9D0C-0E1DD79E7697}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{77B2B9BC-9C5F-4B83-B521-0D0BBF74FC56}"
 EndProject
-Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "Mdi.RkrGst.Test", "test\Mdi.RkrGst.Test\Mdi.RkrGst.Test.xproj", "{8AA96C06-BE3C-4644-9F3C-6DEC73A657AB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Mdi.RkrGst", "src\Mdi.RkrGst\Mdi.RkrGst.csproj", "{D34FA820-E368-48DF-9D0C-0E1DD79E7697}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Mdi.RkrGst.Test", "test\Mdi.RkrGst.Test\Mdi.RkrGst.Test.csproj", "{8AA96C06-BE3C-4644-9F3C-6DEC73A657AB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

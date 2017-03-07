@@ -13,37 +13,39 @@ namespace Mdi.RkrGst.Test
     [Fact]
     public void RingBufferTest()
     {
-      var bufferA = new RingBuffer<int>(10);
-      bufferA.Add(8372);
-      bufferA.Add(8508);
-      bufferA.Add(8218);
-      bufferA.Add(8508);
-      bufferA.Add(8218);
-      bufferA.Add(8508);
-      bufferA.Add(8205);
-      bufferA.Add(8343);
-      bufferA.Add(8374);
-
-      Assert.True(bufferA.Count != bufferA.Capacity);
+            var bufferA = new RingBuffer<int>(10)
+            {
+                8372,
+                8508,
+                8218,
+                8508,
+                8218,
+                8508,
+                8205,
+                8343,
+                8374
+            };
+            Assert.True(bufferA.Count != bufferA.Capacity);
 
       bufferA.Add(8508);
 
       Assert.True(bufferA.Count == bufferA.Capacity);
 
-      var bufferB = new RingBuffer<int>(10);
-      bufferB.Add(42);
-      bufferB.Add(8372);
-      bufferB.Add(8508);
-      bufferB.Add(8218);
-      bufferB.Add(8508);
-      bufferB.Add(8218);
-      bufferB.Add(8508);
-      bufferB.Add(8205);
-      bufferB.Add(8343);
-      bufferB.Add(8374);
-      bufferB.Add(8508);
-
-      Assert.True(bufferA.GetHashCode() == bufferB.GetHashCode());
+            var bufferB = new RingBuffer<int>(10)
+            {
+                42,
+                8372,
+                8508,
+                8218,
+                8508,
+                8218,
+                8508,
+                8205,
+                8343,
+                8374,
+                8508
+            };
+            Assert.True(bufferA.GetHashCode() == bufferB.GetHashCode());
     }
 
     [Fact]
